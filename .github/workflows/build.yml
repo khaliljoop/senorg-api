@@ -48,3 +48,18 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "target/ikbs.jar"
         target: /var/www/html/applications/ikbs
+  run-script:
+    name: Run script
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: executing remote ssh commands using key
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            sudo ls -sf /var/www/html/applications/ikbs/ikbs.jar /etc/init.d/ikbs
+            service start ikbs
