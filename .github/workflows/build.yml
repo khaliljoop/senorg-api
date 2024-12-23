@@ -62,4 +62,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             sudo ln -sf /var/www/html/applications/ikbs/target/ikbs.jar /etc/init.d/ikbs
+            sudo systemctl daemon-reload 
+            sudo systemctl enable ikbs 
             sudo systemctl start ikbs
