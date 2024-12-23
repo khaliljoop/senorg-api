@@ -48,7 +48,7 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "target/ikbs.jar"
         target: /var/www/html/applications/ikbs
-        strip-components: 1
+        strip_components: 1
   run-script:
     name: Run script
     runs-on: ubuntu-latest
@@ -62,7 +62,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            sudo ln -sf /var/www/html/applications/ikbs/target/ikbs.jar /etc/init.d/ikbs
-            sudo systemctl daemon-reload 
-            sudo systemctl enable ikbs 
-            sudo systemctl start ikbs
+            sudo ln -sf /var/www/html/applications/ikbs/ikbs.jar /etc/init.d/ikbs
+            sudo /etc/init.d/ikbs start
