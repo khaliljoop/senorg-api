@@ -61,5 +61,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            sudo ls -sf /var/www/html/applications/ikbs/ikbs.jar /etc/init.d/ikbs
+            sudo ls -sf /var/www/html/applications/ikbs/target/ikbs.jar /etc/init.d/ikbs
             service start ikbs
